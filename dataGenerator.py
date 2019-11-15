@@ -6,6 +6,8 @@ from pydarknet import Detector, Image #openpose
 import os #operating system interactions
 dir_path = os.path.dirname(os.path.realpath(__file__))
 from openpose import pyopenpose as op #open pose
+sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')
+# encoding: utf-8
 
 # coords2Quadrante calculates to which quadrant (out of 16) a tuple of coordinates refers
 # the function's parameters include the coordinates - a tuple - and the image object
@@ -117,7 +119,7 @@ def short_long(objeto):
 # master function, receives a video and the ground truth object
 def master(video,objeto):
     cap = cv2.VideoCapture(video)
-     
+     #oid
     
     #Initializing openPose, specifying directories
     params = dict()
