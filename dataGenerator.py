@@ -242,27 +242,33 @@ def master(video,VFOA):
                     resultingVector = [-1 if x==0 else x for x in resultingVector[:-1]]+objectDistance[0]+objectDistance[1]+[resultingVector[-1]]
                                     #adding the object distance and signing keypoints that weren't found
                     
-                    for x in resultingVector: #counting the keypoints that weren't detected
+                    for x in resultingVector: #counting the keypoints that weren't detected, and making them recognisable
                         if x == -1:
                             tolerance += 1
                             
                             
                             
                 if tolerance < 4 and i%15==0: #if tolerance is bellow a certain treshold
-                    cv2.imwrite('lixo/'+sys.argv[1][:-4]+'_'+sys.argv[2]+str(i)+'_'+isFlipped+'.png',coords2Quadrante((xVFOA,yVFOA),resultingImg,'y')[1])
-                    f= open('lixo/'+sys.argv[1][:-4]+'_'+sys.argv[2]+str(i)+'_'+isFlipped+'.txt',"w+")
+                    
+                    #outputting the picture
+                    cv2.imwrite('dataset/'+sys.argv[1][:-4]+'_'+sys.argv[2]+str(i)+'_'+isFlipped+'.png',coords2Quadrante((xVFOA,yVFOA),resultingImg,'y')[1])
+                    
+                    #creating and outputing a txt with the resulting vector
+                    f= open('dataset/'+sys.argv[1][:-4]+'_'+sys.argv[2]+str(i)+'_'+isFlipped+'.txt',"w+")
                     f.writelines(str(resultingVector))
                     f.close()  
+                    
+                    #showing the image
                     if (sys.argv[3]) == "y":
                         cv2.imshow('image',resultingImg)
                     cv2.waitKey(50)
 
-                isFlipped = 'flipped'
-            i = i+1
+                isFlipped = 'flipped' #so that for the next cicle, the image has flipped on its name
+            i = i+1 # next frame
         else:
             break
      
-    cap.release()
-    cv2.destroyAllWindows()
+    cap.release() #releasing the video
+    cv2.destroyAllWindows() #closing all windows
  
-master(sys.argv[1],sys.argv[2])
+master(sys.argv[1],sys.argv[2]) #executing the program
