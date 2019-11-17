@@ -21,7 +21,7 @@ def coords2Quadrante(coords,img,returnImg):
     
     # next, it compares the x and the y to a reference from the original image (x/2,x/4 or y/2,y/4)
     # note that the image was devided in 16 rectangles: firstly divided in four and each of these, devided
-    # in four again.
+    # in four again
     
     #____________________________# 0
     # 0  \  1   \   4   \   5    #
