@@ -12,15 +12,16 @@ sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')
 # coords2Quadrante calculates to which quadrant (out of 16) a tuple of coordinates refers
 # the function's parameters include the coordinates - a tuple - and the image object
 # It outputs the quadrant and the image with the calculated quadrant overlined
-def coords2Quadrante(coords,img):
-    overlay = img.copy() # safe copy of the image to apply alpha
+def coords2Quadrante(coords,img,returnImg):
+    
+    if returnImg == 'y': overlay = img.copy() # safe copy of the image to apply alpha (only if requested)
     h, w = img.shape[:2] # gets the image shape (height, width) 
     h = int(h) # converts parameters to integers 
     w= int(w)
     
     # next, it compares the x and the y to a reference from the original image (x/2,x/4 or y/2,y/4)
     # note that the image was devided in 16 rectangles: firstly divided in four and each of these, devided
-    # in four again
+    # in four again.
     
     #____________________________# 0
     # 0  \  1   \   4   \   5    #
@@ -39,92 +40,96 @@ def coords2Quadrante(coords,img):
             if coords[0]<int(w/4):
                 if coords[1]<int(h/4):
                     quadrante=0
-                    cv2.rectangle(overlay, (0,0), (int(w/4),int(h/4)), (229,88,191), thickness=-1) 
+                    if returnImg == 'y': cv2.rectangle(overlay, (0,0), (int(w/4),int(h/4)), (229,88,191), thickness=-1) 
                 else:
                     quadrante=2
-                    cv2.rectangle(overlay, (0,int(h/4)), (int(w/4),int(h/2)), (229,88,191), thickness=-1)
+                    if returnImg == 'y': cv2.rectangle(overlay, (0,int(h/4)), (int(w/4),int(h/2)), (229,88,191), thickness=-1)
             else:
                  if coords[1]<int(h/4):
                     quadrante=1
-                    cv2.rectangle(overlay, (int(w/4),0), (int(w/2),int(h/4)), (229,88,191), thickness=-1)
+                    if returnImg == 'y': cv2.rectangle(overlay, (int(w/4),0), (int(w/2),int(h/4)), (229,88,191), thickness=-1)
                  else:
                     quadrante=3               
-                    cv2.rectangle(overlay, (int(w/4),int(h/4)), (int(w/2),int(h/2)), (229,88,191), thickness=-1)
+                    if returnImg == 'y': cv2.rectangle(overlay, (int(w/4),int(h/4)), (int(w/2),int(h/2)), (229,88,191), thickness=-1)
         else:
             if coords[0]<int(w/4): 
                 if coords[1]<int((3*h)/4):
                     quadrante=8
-                    cv2.rectangle(overlay, (0,int(h/2)), (int(w/4),int((3*h)/4)), (229,88,191), thickness=-1)
+                    if returnImg == 'y': cv2.rectangle(overlay, (0,int(h/2)), (int(w/4),int((3*h)/4)), (229,88,191), thickness=-1)
                     
                 else:
                     quadrante=10
-                    cv2.rectangle(overlay, (0,int((3*h)/4)), (int(w/4),int(h)), (229,88,191), thickness=-1)
+                    if returnImg == 'y': cv2.rectangle(overlay, (0,int((3*h)/4)), (int(w/4),int(h)), (229,88,191), thickness=-1)
             else:
                  if coords[1]<int((3*h)/4):
                     quadrante=9
-                    cv2.rectangle(overlay, (int(w/4),int(h/2)), (int(w/2),int((3*h)/4)), (229,88,191), thickness=-1)
+                    if returnImg == 'y': cv2.rectangle(overlay, (int(w/4),int(h/2)), (int(w/2),int((3*h)/4)), (229,88,191), thickness=-1)
                  else:
                     quadrante=11               
-                    cv2.rectangle(overlay, (int(w/4),int((3*h)/4)), (int(w/2),h), (229,88,191), thickness=-1)
+                    if returnImg == 'y': cv2.rectangle(overlay, (int(w/4),int((3*h)/4)), (int(w/2),h), (229,88,191), thickness=-1)
     else:
         if coords[1]<int(h/2): 
             if coords[0]<int((3*w)/4):
                 if coords[1]<int(h/4):
                     quadrante=4
-                    cv2.rectangle(overlay, (int(w/2),0), (int((3*w)/4),int(h/4)), (229,88,191), thickness=-1)
+                    if returnImg == 'y': cv2.rectangle(overlay, (int(w/2),0), (int((3*w)/4),int(h/4)), (229,88,191), thickness=-1)
                  
                 else:
                     quadrante=6
-                    cv2.rectangle(overlay, ((int(w/2),int(h/4))), (int((3*w)/4),int(h/2)), (229,88,191), thickness=-1)
+                    if returnImg == 'y': cv2.rectangle(overlay, ((int(w/2),int(h/4))), (int((3*w)/4),int(h/2)), (229,88,191), thickness=-1)
                    
             else:
                  if coords[1]<int(h/4):
                     quadrante=5
-                    cv2.rectangle(overlay, (int((3*w)/4),0), (int(w),int(h/4)), (229,88,191), thickness=-1)
+                    if returnImg == 'y': cv2.rectangle(overlay, (int((3*w)/4),0), (int(w),int(h/4)), (229,88,191), thickness=-1)
                     
                  else:
                     quadrante=7          
-                    cv2.rectangle(overlay, (int((3*w)/4),int(h/4)), (int(w),int(h/2)), (229,88,191), thickness=-1)
+                    if returnImg == 'y': cv2.rectangle(overlay, (int((3*w)/4),int(h/4)), (int(w),int(h/2)), (229,88,191), thickness=-1)
                     
         else:
             if coords[0]<int((3*w)/4): 
                 if coords[1]<int((3*h)/4):
                     quadrante=12
-                    cv2.rectangle(overlay, (int(w/2),int(h/2)), (int((3*w)/4),int((3*h)/4)), (229,88,191), thickness=-1)
+                    if returnImg == 'y': cv2.rectangle(overlay, (int(w/2),int(h/2)), (int((3*w)/4),int((3*h)/4)), (229,88,191), thickness=-1)
                 else:
                     quadrante=14
-                    cv2.rectangle(overlay, (int(w/2),int((3*h)/4)), (int((3*w)/4),int(h)), (229,88,191), thickness=-1)
+                    if returnImg == 'y': cv2.rectangle(overlay, (int(w/2),int((3*h)/4)), (int((3*w)/4),int(h)), (229,88,191), thickness=-1)
             else:
                  if coords[1]<int((3*h)/4):
                     quadrante=13
-                    cv2.rectangle(overlay, (int((3*w)/4),int(h/2)), (int(w),int((3*h)/4)), (229,88,191), thickness=-1)
+                    if returnImg == 'y': cv2.rectangle(overlay, (int((3*w)/4),int(h/2)), (int(w),int((3*h)/4)), (229,88,191), thickness=-1)
                  else:
                     quadrante=15               
-                    cv2.rectangle(overlay, (int((3*w)/4),int((3*h)/4)), (int(w),int(h)), (229,88,191), thickness=-1)                    
+                    if returnImg == 'y': cv2.rectangle(overlay, (int((3*w)/4),int((3*h)/4)), (int(w),int(h)), (229,88,191), thickness=-1)                    
             
-    new = cv2.addWeighted(overlay, 0.4, img, 1 - 0.4, 0, img) #purple overlay 
-    return quadrante,new #returns the quadrant and a new picture, with the underlined quadrant
+    if returnImg == 'y': new = cv2.addWeighted(overlay, 0.4, img, 1 - 0.4, 0, img) #purple overlay 
+    
+    
+    if returnImg == 'y':
+        return quadrante,new #returns the quadrant and a new picture, with the underlined quadrant
+    else:
+        return quadrante #returning just the quadrant, to spare procrssing time
 
 
 # contextual information - classifying an object in long or short range interaction
-def short_long(objeto):
-    cena='cena'
-    if objeto in ['tv','pottedplant','vase','cat']:
-        cena='long'
-    if objeto in ['chair','dining table','refrigerator','microwave','sink','bowl','apple','banana','laptop',\
+def short_long(entity):
+    distance='null'
+    if entity in ['tv','pottedplant','vase','cat']:
+        distance='long'
+    if entity in ['chair','dining table','refrigerator','microwave','sink','bowl','apple','banana','laptop',\
                 'keyboard','mouse','knife','fork','backpack']:
-        cena='short'
-    return cena
+        distance='short'
+    return distance
 
-# master function, receives a video and the ground truth object
-def master(video,objeto):
+# master function, receives a video and the ground truth object (Visual Focus of Atention)
+def master(video,VFOA):
     cap = cv2.VideoCapture(video)
-     #oid
-    
     #Initializing openPose, specifying directories
     params = dict()
     params["model_folder"] = "/home/sims/repositories/openpose/models/" 
       
+    #I'm not sure this part is crucial
     for i in range(0, len(video)):
         curr_item = video[i]
         if i != len(video)-1: next_item = video[i+1]
@@ -136,132 +141,134 @@ def master(video,objeto):
             key = curr_item.replace('-','')
             if key not in params: params[key] = next_item
      
+    #OpenPose initializing 
     opWrapper = op.WrapperPython()
     opWrapper.configure(params)
     opWrapper.start()
+    
+    #Initializing YOLO
      
     net = Detector(bytes("/home/sims/repositories/YOLO3-4-Py/cfg/yolov3.cfg", encoding="utf-8"), \
     bytes("/home/sims/repositories/YOLO3-4-Py/weights/yolov3.weights", encoding="utf-8"), 0, 
     bytes("/home/sims/repositories/YOLO3-4-Py/cfg/coco.data",encoding="utf-8"))  
      
-    i = 0
+    i = 0 #frame counter
     while(True):
-        
-
-        ret, frame = cap.read()
-        #print(sys.argv[3])
-        if ret:
+        ret, frame = cap.read() 
+        if ret: #ret = correctly read
             print(i) 
-            falhado = 0
+            
+            frame = cv2.resize(frame,(1280 ,720)) #converting each frame to a lower resolution
+            fliped_frame = cv2.flip(frame,1) #to increase sample size, simetric frame will also be considered
+            tolerance = 0 #initializing variable. it will allow for a certain error treshold
+            
+            images = [frame,fliped_frame] #normal and fliped frame
+            isFlipped = 'orginial'
+            for img in images:  #run once with the image in its normal orientation, and once while fliped
+                
+                if (sys.argv[3]) == "y": #display starting image
+                    cv2.imshow('Current Frame',img)
+                    cv2.waitKey(25) #wait 25 ms to show next image (if available)
             
 
-            frame = cv2.resize(frame,(1280 ,720))
-            
-            m = 0
-            
-            while m != 2 :
+                xVFOA, yVFOA = -1, -1 #initializing variables VFOA = visual focus of attention (x and y). Note that 
+                                 #(-1,-1) is an impossible VFOA, so will trigger the error, if needed
                 
-                if m == 1:
-                    frame = cv2.flip(frame,1)
-                
-                if (sys.argv[3]) == "y":
-                    cv2.imshow('image',frame)
+                #initializing and running YOLO object detetion   , which will give contextual information 
+                dark_frame = Image(img) 
+                results = net.detect(dark_frame) #results is a list of lists - one list for each object, containing: its name,
+                                                 #the amount of trust in the classification, and the bounds.
+            
+                objectDistance = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]] #initializng a variable 
+                                            #that will count how many objects are in each quadrant and whether they are of close
+                                            #or long range interaction, to complemnt contextual information
+                maxheight = -1
+                for cat, score, bounds in results: 
                     
-                cv2.waitKey(25)
-                targetx = 0
-                targety = 0
+                    x, y, w, h = bounds # x,y - center of the object, w,h = width and height
+                    cv2.rectangle(img, (int(x-w/2),int(y-h/2)),(int(x+w/2),int(y+h/2)),(0,0,255), thickness=2) #rectangle over the object
+                    cv2.putText(img, str(cat.decode("utf-8")), (int(x), int(y)), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 0)) #name over the object
                  
-                dark_frame = Image(frame)
-                results = net.detect(dark_frame)
-                conta=[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
+                    distance = short_long(str(cat.decode("utf-8"))) #check whether the object is short or long range 
+                    quadrant = coords2Quadrante((x,y),img,'n') #see in which quadrant the object is
                 
-                
-                for cat, score, bounds in results:
-                    x, y, w, h = bounds
-                    cv2.rectangle(frame, (int(x-w/2),int(y-h/2)),(int(x+w/2),int(y+h/2)),(0,0,255), thickness=2)
-                    cv2.putText(frame, str(cat.decode("utf-8")), (int(x), int(y)), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 0))
-                    if str(cat.decode("utf-8")) == objeto:
-                        maxh = 0
-                        if h > maxh:
-                            targetx = x
-                            targety = y
-                            cv2.circle(frame, (int(x),int(y)), 3,(255,255,255), thickness=5)  
+                    if distance =='short':  #counting the number of objects in each quadrant
+                        objectDistance[0][quadrant] += 1
+                    elif distance =='long':
+                        objectDistance[1][quadrant] += 1
                     
-                    
-                    a=short_long(str(cat.decode("utf-8")))
-                    
-                    b=coords2Quadrante((x,y),frame)[0]
-                    
-                    
-                    if a=='short':
-                        conta[0][b]+=1
-                    if a=='long':
-                        conta[1][b]+=1
-                        
-                if (sys.argv[3]) == "y":
-                    cv2.imshow('image',frame)
-                cv2.waitKey(25)
-                del dark_frame
-                
-                if targetx == 0:
-                    falhado = 4
-                #cv2.imwrite(sys.argv[1][:-4]+str(i)+"_YOLO.png",frame)
-                datum = op.Datum()
-                imageToProcess = frame
-                #os.remove(sys.argv[1][:-4] +str(i)+"_YOLO.png")
+                    if str(cat.decode("utf-8")) == VFOA:    #if certain object is the ground truth object to which the person is looking at,                                                       
+                        if h > maxheight:                   # save its coordinates. If there are several "focus" objects, choose the closest
+                            maxheight = h                   # - the one with the maximum height - 
+                            xVFOA = x
+                            yVFOA = y
+                            
+                cv2.circle(img,(int(xVFOA),int(yVFOA)), 3,(255,255,255), thickness=5)    #circling the VFOA on the image          
+              
+                del dark_frame #cleaning network
+            
+                if xVFOA + yVFOA == -2: #triggering error
+                    tolerance = 4
+        
+                datum = op.Datum() #running OpenPose - (would like to make OpenPose run on a clean image - not one full of rectangles from YOLO)
+                imageToProcess = frame                              #and add the skeletons to the image after YOLO analyses it
                 datum.cvInputData = imageToProcess
                 opWrapper.emplaceAndPop([datum]) 
-                
-        
-                try:
-                    posi = (datum.poseKeypoints[0])
-                except(IndexError):
-                    falhado = 4
-                    print('help'+str(falhado))
-                
-                if falhado < 4 and i%15==0:
-                    final = cv2.arrowedLine(datum.cvOutputData,(int(posi[0][0]),\
-                                                                    int(posi[0][1])),\
-                                                                    (int(targetx),int(targety)),(0, 255, 221), thickness=3)
-                    Result = coords2Quadrante((targetx,targety),final)
-                    
             
-                    fim = [posi[0][0],posi[0][1],\
-                                       posi[17][0],posi[17][1],\
-                                       posi[18][0],posi[18][1],\
-                                       posi[15][0],posi[15][1],\
-                                       posi[16][0],posi[16][1],\
-                                       posi[4][0],posi[4][1],\
-                                       posi[7][0],posi[7][1],\
-                                       Result[0]]
-                    
-                    if (sys.argv[3]) == "y":
-                        cv2.imshow('image',final)
-                    cv2.waitKey(50)
+                
+                try: #will only run if only one person was detected in shot, else, will skip this frame        
+                    keypoints = (datum.poseKeypoints[0])
+                except(IndexError):
+                    tolerance = 4  #trigger error 
+                
+                if tolerance < 4 and i%15==0: #if tolerable, outputing results. i%15 frame is to only take four sample frames out of each second of video
+                                              #I'd like to move this filter upwards in order to spare processing power (used by Open Pose and YOLO)
+                                              #I wasn't able to do this in previous testing. Will try again.                   
+                                              
+                    resultingImg = cv2.arrowedLine(datum.cvOutputData,(int(keypoints[0][0]),int(keypoints[0][1])),\
+                                                                    (int(xVFOA),int(yVFOA)),(0, 255, 221), thickness=3) #draws an arrow, from the eyes to the VFOA
+            
+                    resultingVector = [keypoints[0][0],keypoints[0][1],\
+                                       keypoints[17][0],keypoints[17][1],\
+                                       keypoints[18][0],keypoints[18][1],\
+                                       keypoints[15][0],keypoints[15][1],\
+                                       keypoints[16][0],keypoints[16][1],\
+                                       keypoints[4][0],keypoints[4][1],\
+                                       keypoints[7][0],keypoints[7][1],\
+                                       coords2Quadrante((xVFOA,yVFOA),resultingImg,'n')] #the resulting vector, with: face coordinates, 
+                                                        #hand coordinates and the quadrant
         
+                
+                    resultingVector = [-1 if x==0 else x for x in resultingVector[:-1]]+objectDistance[0]+objectDistance[1]+[resultingVector[-1]]
+                                    #adding the object distance and signing keypoints that weren't found
                     
-                
-                
-                    new_fim = [-1 if x==0 else x for x in fim[:-1]]+conta[0]+conta[1]+[fim[-1]]
-                    for x in new_fim:
+                    for x in resultingVector: #counting the keypoints that weren't detected, and making them recognisable
                         if x == -1:
-                            falhado += 1
-    
-                if falhado < 3 and i%15==0:
-                    cv2.imwrite('lixo/'+sys.argv[1][:-4]+'_'+sys.argv[2]+str(i)+'_'+str(m)+'.png',Result[1])
-                    f= open('lixo/'+sys.argv[1][:-4]+'_'+sys.argv[2]+str(i)+'_'+str(m)+'.txt',"w+")
-                    f.writelines(str(new_fim))
+                            tolerance += 1
+                            
+                            
+                            
+                if tolerance < 4 and i%15==0: #if tolerance is bellow a certain treshold
+                    
+                    #outputting the picture
+                    cv2.imwrite('dataset/'+sys.argv[1][:-4]+'_'+sys.argv[2]+str(i)+'_'+isFlipped+'.png',coords2Quadrante((xVFOA,yVFOA),resultingImg,'y')[1])
+                    
+                    #creating and outputing a txt with the resulting vector
+                    f= open('dataset/'+sys.argv[1][:-4]+'_'+sys.argv[2]+str(i)+'_'+isFlipped+'.txt',"w+")
+                    f.writelines(str(resultingVector))
                     f.close()  
+                    
+                    #showing the image
                     if (sys.argv[3]) == "y":
-                        cv2.imshow('image',final)
+                        cv2.imshow('image',resultingImg)
                     cv2.waitKey(50)
-    
-                m += 1
-            i = i+1
+
+                isFlipped = 'flipped' #so that for the next cicle, the image has flipped on its name
+            i = i+1 # next frame
         else:
             break
      
-    cap.release()
-    cv2.destroyAllWindows()
+    cap.release() #releasing the video
+    cv2.destroyAllWindows() #closing all windows
  
-master(sys.argv[1],sys.argv[2])
+master(sys.argv[1],sys.argv[2]) #executing the program
