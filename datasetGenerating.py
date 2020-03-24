@@ -152,14 +152,22 @@ def main(video,VFOA,visualFeedback):
     j = 0
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
+    #used frames
+    usedFrames = 0
+
+    #buffer - only use one frame in each 15, to make data more different
+    buffer = 15
+
     #cycling through the video
     while True:
         ret, frame = cap.read()
         if not ret:
             break
         
+        if j == 1: h, w = frame.shape[:2]
+
         #in order to have higher variance in data, only accepting 1 out of a sequence of 15 frames
-        if j%15 != 0: 
+        if j%buffer != 0: 
             j += 1
 
         else:
@@ -250,7 +258,7 @@ def main(video,VFOA,visualFeedback):
 
                     #counting the number of keyposes that weren't detected, if there're more than 3 (3*(x,y) = 6), the data is discarded                                 
                     if resultingVector.count(-1) >= 6:  #this tolerance value can be changed          
-                        print('There were a total of ' + str(int(resultingVector.count(0))/2) + ' keypoints missing. Thus, this frame will be ignored.')                 
+                        print('There were a total of ' + str(int(resultingVector.count(-1))/2) + ' keypoints missing. Thus, this frame will be ignored.')                 
 
                     else:
                         #adding context and the quadrant to the vector
@@ -261,6 +269,8 @@ def main(video,VFOA,visualFeedback):
                         f= open('dataset/' + str(date.today()) + '_' + sys.argv[1][14:-4]+'_'+sys.argv[2]+'_'+str(j)+'.txt',"w+") 
                         f.writelines(str(resultingVector))
                         f.close()   
+                        usedFrames += 1
+                        print('This frame has generated data successfully. The ' + VFOA + ' can be found in quadrant ' + str(quadrantVFOA) + '.')
 
                     if visualFeedback: cv2.imshow('cvwindow', frame) #showing the frame
                     if visualFeedback: cv2.waitKey(10) #waiting - this value can be decreased, to shorten generation times
@@ -270,10 +280,20 @@ def main(video,VFOA,visualFeedback):
             
             if cv2.waitKey(1) == 27: #???
                 break
-
+    
+    
+    print('The images were analysed in a: ' + str(w) + 'x' + str(h) + ' resolution.')
+    print('A total of ' + str(usedFrames) + ' were used, out of ' + str(total_frames) + ' frames. (' + str(usedFrames/(total_frames/buffer))[0:4] + '%)')
     cap.release()
     cv2.destroyAllWindows()
 
+def strToBool(string):
+    if string == 'True':
+        return True
+    elif string == 'False':
+        return False
+
+
 if __name__ == '__main__':
-    main(sys.argv[1], sys.argv[2], bool(sys.argv[3]))
+    main(sys.argv[1], sys.argv[2],strToBool(sys.argv[3]))
 
