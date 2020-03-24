@@ -244,9 +244,12 @@ def main(video,VFOA,visualFeedback):
                                        keypoints[4][0],keypoints[4][1],\
                                        keypoints[7][0],keypoints[7][1]]
                                        #nose, right ear, left ear, right eye, left eye, right hand, left hand
-                                 
+
+                    resultingVector = [-1 if x==0 else x for x in resultingVector] #increasing the strangeness of undetected points
+                                                                                   # so that it's more evident for thge SVM to understand
+
                     #counting the number of keyposes that weren't detected, if there're more than 3 (3*(x,y) = 6), the data is discarded                                 
-                    if resultingVector.count(0) >= 6:  #this tolerance value can be changed          
+                    if resultingVector.count(-1) >= 6:  #this tolerance value can be changed          
                         print('There were a total of ' + str(int(resultingVector.count(0))/2) + ' keypoints missing. Thus, this frame will be ignored.')                 
 
                     else:
