@@ -111,7 +111,7 @@ def short_long(entity):
     #short_long() classify the distance of the interaction based on the kind of the object (if you hold it = short)
 
     distance='null'
-    if entity in ['tv','pottedplant','vase','cat']:
+    if entity in ['tv','pottedplant','vase','cat','bowl']:
         distance='long'
     if entity in ['chair','dining table','refrigerator','microwave','sink','bowl','apple','banana','laptop',\
                 'keyboard','mouse','knife','fork','backpack']:
@@ -164,6 +164,9 @@ def main(video,VFOA,visualFeedback):
         if not ret:
             break
         
+        #resizing frame
+        frame = cv2.resize(frame, (640,352))
+
         if j == 1: h, w = frame.shape[:2]
 
         #in order to have higher variance in data, only accepting 1 out of a sequence of 15 frames
