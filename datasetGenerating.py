@@ -111,9 +111,9 @@ def short_long(entity):
     #short_long() classify the distance of the interaction based on the kind of the object (if you hold it = short)
 
     distance='null'
-    if entity in ['tv','pottedplant','vase','cat','bowl']:
+    if entity in ['tv','pottedplant','vase','cat','bowl','clock','vase','toilet','chair']:
         distance='long'
-    if entity in ['chair','dining table','refrigerator','microwave','sink','bowl','apple','banana','laptop',\
+    if entity in ['dining table','refrigerator','microwave','sink','apple','banana','laptop',\
                 'keyboard','mouse','knife','fork','backpack']:
         distance='short'
     return distance
