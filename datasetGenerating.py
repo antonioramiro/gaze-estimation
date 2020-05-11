@@ -37,8 +37,8 @@ def coords2Quadrante(coords,img,returnImg):
             if coords[0]<int(w/4):
                 if coords[1]<int(h/4):
                     quadrante=0
-                else:
                     if returnImg: cv2.rectangle(overlay, (0,0), (int(w/4),int(h/4)), (229,88,191), thickness=-1) 
+                else:
                     quadrante=2
                     if returnImg: cv2.rectangle(overlay, (0,int(h/4)), (int(w/4),int(h/2)), (229,88,191), thickness=-1)
             else:
