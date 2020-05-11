@@ -217,6 +217,8 @@ def callback(self, ros_data):
                 #adding context and the quadrant to the vector
                 resultingVector += objectDistance[0] + objectDistance[1]
 
+                # feature engineering @alex
+
                 #estimating VFOA
                 quadrantVFOA = clf.predict(resultingVector)
                 print('The ' + VFOA + 'is thought to be in quadrant ' + str(quadrantVFOA) + '.')
