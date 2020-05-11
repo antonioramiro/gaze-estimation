@@ -155,8 +155,8 @@ def main(video,VFOA,visualFeedback):
     #used frames
     usedFrames = 0
 
-    #buffer - only use one frame in each 15, to make data more different
-    buffer = 15
+    #buffer - only use one frame in each 3, to make data more different
+    buffer = 4
 
     #cycling through the video
     while True:
@@ -248,19 +248,20 @@ def main(video,VFOA,visualFeedback):
                     #building the result, firstly with keyposes
                     #Check https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/output.md - Pose Output Format (BODY_25)
                     resultingVector = [keypoints[0][0],keypoints[0][1], \
+                                       keypoints[1][0],keypoints[1][1], \
                                        keypoints[17][0],keypoints[17][1],\
                                        keypoints[18][0],keypoints[18][1],\
                                        keypoints[15][0],keypoints[15][1],\
                                        keypoints[16][0],keypoints[16][1],\
                                        keypoints[4][0],keypoints[4][1],\
                                        keypoints[7][0],keypoints[7][1]]
-                                       #nose, right ear, left ear, right eye, left eye, right hand, left hand
+                                       #nose, neck, right ear, left ear, right eye, left eye, right hand, left hand
 
                     resultingVector = [-1 if x==0 else x for x in resultingVector] #increasing the strangeness of undetected points
                                                                                    # so that it's more evident for thge SVM to understand
 
                     #counting the number of keyposes that weren't detected, if there're more than 3 (3*(x,y) = 6), the data is discarded                                 
-                    if resultingVector.count(-1) >= 6:  #this tolerance value can be changed          
+                    if (resultingVector[8] + resultingVector[9] != -2) and resultingVector.count(-1) >= 6:  #this tolerance value can be changed          
                         print('There were a total of ' + str(int(resultingVector.count(-1))/2) + ' keypoints missing. Thus, this frame will be ignored.')                 
 
                     else:
