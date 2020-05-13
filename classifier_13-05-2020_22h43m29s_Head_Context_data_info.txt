@@ -1,0 +1,7 @@
+Group of Coordinates: Head_Context_data
+Type of classifier: SVM
+C:100000.0
+Gamma:1e-05
+
+----
+The percentage of success was: 51.8348623853211 %
