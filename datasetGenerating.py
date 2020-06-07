@@ -245,7 +245,7 @@ def main(video,VFOA,visualFeedback):
                     if visualFeedback: cv2.arrowedLine(frame,(int(keypoints[0][0]),int(keypoints[0][1])),(int(xVFOA),int(yVFOA)),(0, 255, 221), thickness=1)
                     quadrantVFOA = coords2Quadrante((xVFOA, yVFOA),frame,True)[0]  #quadrant of the VFOA
 
-                    #building the result, firstly with keyposes
+                    #building the result, firstly with keyposes - 
                     #Check https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/output.md - Pose Output Format (BODY_25)
                     resultingVector = [keypoints[0][0],keypoints[0][1], \
                                        keypoints[1][0],keypoints[1][1], \
