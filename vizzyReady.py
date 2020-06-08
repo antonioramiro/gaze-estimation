@@ -53,7 +53,7 @@ def __init__(self):
     self.clf = joblib.load(sys.argv[1])
 
     if VERBOSE :
-        print "subscribed to /camera/image/compressed"
+        print("subscribed to /camera/image/compressed")
 
     def strToBool(string):
         if string == 'True':
@@ -119,7 +119,7 @@ def callback(self, ros_data):
     '''Callback function of subscribed topic. 
     Here images get converted and features detected'''
     if VERBOSE :
-        print 'received image of type: "%s"' % ros_data.format
+        print('received image of type: "%s"' % ros_data.format)
 
     #### direct conversion to CV2 ####
     np_arr = np.fromstring(ros_data.data, np.uint8)
@@ -229,9 +229,7 @@ def callback(self, ros_data):
                 cv2.imshow('cvwindow', frame) #showing the frame
             if visualFeedback: cv2.waitKey(3) #waiting - this value can be decreased, to shorten generation times
    
-            if cv2.waitKey(1) == 27: 
-                break
-    
+           
         cv2.destroyAllWindows()
 
 def main(args):
@@ -241,7 +239,7 @@ def main(args):
     try:
         rospy.spin()
     except KeyboardInterrupt:
-        print "Shutting down ROS Image feature detector module"
+        print("Shutting down ROS Image feature detector module")
     cv2.destroyAllWindows()
 
 if __name__ == '__main__':
