@@ -1,0 +1,7 @@
+Group of Coordinates: 0
+Type of classifier: SVM
+C:100000.0
+Gamma:1e-05
+
+----
+The percentage of success was: 72.03682393555812 %
