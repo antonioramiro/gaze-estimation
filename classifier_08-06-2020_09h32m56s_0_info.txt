@@ -1,0 +1,4 @@
+Group of Coordinates: 0
+Type of classifier: SVM
+C:1000000.0
+Gamma:0.0001
