@@ -8,7 +8,7 @@ import pyyolo
 from openpose import pyopenpose as op
 
 #classifier
-import joblib 
+from joblib import dump, load
 from scipy import stats
 from sklearn.svm import SVC
 from sklearn import svm
@@ -34,7 +34,7 @@ class image_feature:
             CompressedImage, self.callback,  queue_size = 1)
 
         
-        #adicionei o que está abaixo. adicionei o 'self.' como estava nas outras coisas - ja nao sei trabalhar com classes (?)
+        #adicionei o que estÃ¡ abaixo. adicionei o 'self.' como estava nas outras coisas - ja nao sei trabalhar com classes (?)
 
         #initializing YOLO detector
         self.detector = pyyolo.YOLO("/opt/darknet/cfg/yolov3.cfg", 
@@ -128,7 +128,7 @@ class image_feature:
         frame = cv2.imdecode(np_arr, cv2.CV_LOAD_IMAGE_COLOR)
 
 
-        #resize frame - meti o que está a partir daqui (!)
+        #resize frame - meti o que estÃ¡ a partir daqui (!)
         frame = cv2.resize(frame, (640,352))
 
         xVFOA, yVFOA = -1, -1 #initializing variables VFOA = visual focus of attention (x and y). Note that 
