@@ -762,4 +762,4 @@ while i != 3:
     #plt.subplots_adjust(wspace=0.8, hspace=0.8)
     plt.show()
 
-i += 1
+    i += 1
