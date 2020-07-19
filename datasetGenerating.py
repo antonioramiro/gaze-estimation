@@ -261,7 +261,7 @@ def main(video,VFOA,visualFeedback):
                                                                                    # so that it's more evident for thge SVM to understand
 
                     #counting the number of keyposes that weren't detected, if there're more than 3 (3*(x,y) = 6), the data is discarded                                 
-                    if (resultingVector[8] + resultingVector[9] != -2) and resultingVector.count(-1) >= 6:  #this tolerance value can be changed          
+                    if (resultingVector[8:12].count(-1) > 1) or resultingVector.count(-1) >= 6:  #this tolerance value can be changed          
                         print('There were a total of ' + str(int(resultingVector.count(-1))/2) + ' keypoints missing. Thus, this frame will be ignored.')                 
 
                     else:
