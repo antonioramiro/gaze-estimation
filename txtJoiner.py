@@ -4,11 +4,14 @@ import sys #manipulating function arguments
 
 with open("dataset_" + str(date.today()) + ".txt","w+") as dataset:        
     dir = sys.argv[1]
-    files = [os.listdir(dir).sort()]
-
+    files = os.listdir(dir)
+    print(files)
     print(type(files))
-    print(type(files[9]))
 
     for file in files :
+
+            print(file)
+            print(type(file))
+
             lines = open(os.path.join( dir, file) ,"r").read()
             dataset.write(lines+'\n')
