@@ -8,6 +8,7 @@ i = 0
 
 while i != folderSize:
     line = os.listdir(directory)[i]
+    print(i,line)
     if not str(line[11:-5]) in dataset:
         dataset[str(line[11:-5])] = [i,0]
     else:
