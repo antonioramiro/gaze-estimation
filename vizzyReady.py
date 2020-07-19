@@ -8,7 +8,7 @@ import pyyolo
 from openpose import pyopenpose as op
 
 #classifier
-from joblib import dump, load
+import joblib
 from scipy import stats
 from sklearn.svm import SVC
 from sklearn import svm
@@ -21,7 +21,7 @@ from sensor_msgs.msg import CompressedImage
 
 VERBOSE = False 
 
-class image_feature:
+class gaze-estimator:
 
     def __init__(self):
         '''Initialize ros publisher, ros subscriber'''
@@ -30,8 +30,7 @@ class image_feature:
         # self.bridge = CvBridge()
 
         # subscribed Topic
-        self.subscriber = rospy.Subscriber("/camera/image/compressed",
-            CompressedImage, self.callback,  queue_size = 1)
+        self.subscriber = rospy.Subscriber("/camera/image/compressed", CompressedImage, self.callback,  queue_size = 1)
 
         
         #adicionei o que estÃ¡ abaixo. adicionei o 'self.' como estava nas outras coisas - ja nao sei trabalhar com classes (?)
@@ -225,19 +224,20 @@ class image_feature:
                     quadrantVFOA = clf.predict(resultingVector)
                     print('The ' + VFOA + 'is thought to be in quadrant ' + str(quadrantVFOA) + '.')
                     print('\n') #visual shell organization
-
-                if visualFeedback:
+                    
                     frame = paintImage(frame)
-                    cv2.imshow('cvwindow', frame) #showing the frame
-                if visualFeedback: cv2.waitKey(3) #waiting - this value can be decreased, to shorten generation times
+                    self.image_pub.publish(frame)
+                #if visualFeedback:
+                #    cv2.imshow('cvwindow', frame) #showing the frame
+                #if visualFeedback: cv2.waitKey(3) #waiting - this value can be decreased, to shorten generation times
     
             
-            cv2.destroyAllWindows()
+            #cv2.destroyAllWindows()
 
 def main(args):
     '''Initializes and cleanup ros node'''
-    ic = image_feature()
-    rospy.init_node('image_feature', anonymous=True)
+    ge = gaze-estimator()
+    rospy.init_node('gaze-estimator', anonymous=True)
     try:
         rospy.spin()
     except KeyboardInterrupt:

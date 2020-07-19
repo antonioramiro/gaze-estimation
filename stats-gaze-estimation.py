@@ -3,11 +3,7 @@
 i = 0
 while i != 3:
 
-    # # Gaze Estimation
-
-    # In[1]:
-
-
+#IMPORTS
     #Basic
     import numpy as np
     import matplotlib.pyplot as plt
@@ -35,29 +31,12 @@ while i != 3:
     from sklearn.metrics import classification_report
     from pandas import DataFrame
     import seaborn as sns
+
     #PCA
     import sklearn as sl
     from sklearn.preprocessing import StandardScaler as ss
     from sklearn.decomposition import PCA 
     from sklearn import utils
-
-
-    # ## 1. Recording a video
-
-    # Just record it. Falar de algumas precauÃ§Ãµes e cuidades. IDK
-
-    # ## 2. Converting the video in measurable data / Data treatment
-
-    # ### 2.1 Importing the text file
-
-    # To do so, we created [datasetGenerating.py](https://github.com/antonioramiro/gaze-estimation/blob/master/datasetGenerating.py) which converts a video into an array of (~) 47 elements. yada yada yada
-
-    # ``demo da datasetGenerating`` .gif e o comando q se usa 
-
-    # Then, to cluster every vector generated, each in an individual .txt file, we used [txtJoiner](https://github.com/antonioramiro/gaze-estimation/blob/master/txtJoiner.py), which outputs the following file yada yada. When said file is imported, the lines are read as strings, therefore it needs to be converted to a list of lists.
-
-    # In[2]:
-
 
     #opening the file
     with open('dataset_2020-06-07.txt') as file:
@@ -72,36 +51,10 @@ while i != 3:
         dataset += [individual_line]
         counter+=1
 
-
-    # #### 2.1.1 Understanding the data
-
-    # meter aqui imagem do boneco, com a legenda adequada ao nosso vetor. como por aquilo bonito? fica melhor explicado por escrito do que tudo discriminado.
-
-    # ``[x_nose, y_nose, x_neck, y_neck, x_right ear, y_right ear, x_left ear, y_left ear, x_right eye, y_right eye, x_left eye, y_left eye, x_right hand, y_right hand, x_left hand, y_left hand, ... contextual information - 32 positions ..., quadrant]``
-
-    # ### 2.2 Separating data for testing and for training
-
-    # Now let's get the party going. Separate data
-
-    # In[3]:
-
-
     testing_data = dataset[int(len(dataset)*0.8):]
     training_data = dataset[:int(len(dataset)*0.8)]
 
-
-    # ### 2.2 Increasing sample size
-
-    # inverter horizontalmente as cenas + termos o dobro dos dados. nota: a geradora do dataset cospe a resoluÃ§Ã£o das imagens na sua penÃºltima linha
-
-    # In[4]:
-
-
     print('Initially, the training dataset is composed by ' + str(len(training_data)) + ' elements.')
-
-
-    # In[5]:
-
 
     def dataDoubler(dataset):
         resolution = (640,352) 
