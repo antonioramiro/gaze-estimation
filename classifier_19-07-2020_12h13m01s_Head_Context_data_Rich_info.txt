@@ -1,0 +1,12 @@
+Group of Coordinates: Head_Context_data_Rich
+Type of classifier: SVM
+C:1000000.0
+Gamma:1e-06
+
+----
+The percentage of success was: 82.0 %
+The range score was 4799 out of 5214 : 278022066.67 % 
+The score 3 was: 82.28 %
+The score 2 was: 12.89 %
+The score 1 was: 3.51 %
+The score 0 was: 1.27 %

@@ -1,0 +1,29 @@
+[I 00:44:05.528 NotebookApp] Serving notebooks from local directory: /home/colabsims/code_workspace/gaze-estimation
+[I 00:44:05.528 NotebookApp] The Jupyter Notebook is running at:
+[I 00:44:05.528 NotebookApp] http://localhost:8888/?token=2ad83232f96017886bf35b62c1347719f93c410a1d37e7b0
+[I 00:44:05.528 NotebookApp]  or http://127.0.0.1:8888/?token=2ad83232f96017886bf35b62c1347719f93c410a1d37e7b0
+[I 00:44:05.528 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[W 00:44:05.530 NotebookApp] No web browser found: could not locate runnable browser.
+[C 00:44:05.531 NotebookApp] 
+    
+    To access the notebook, open this file in a browser:
+        file:///home/colabsims/.local/share/jupyter/runtime/nbserver-11916-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8888/?token=2ad83232f96017886bf35b62c1347719f93c410a1d37e7b0
+     or http://127.0.0.1:8888/?token=2ad83232f96017886bf35b62c1347719f93c410a1d37e7b0
+[I 00:44:34.157 NotebookApp] 302 GET / (::1) 0.37ms
+[W 00:44:38.038 NotebookApp] 400 GET /api/contents/gaze-estimation.ipynb?type=notebook&_=1595115877059 (::1): Unreadable Notebook: /home/colabsims/code_workspace/gaze-estimation/gaze-estimation.ipynb NotJSONError('Notebook does not appear to be JSON: \'{\\n "cells": [\\n  {\\n   "cell_type": "m...',)
+[W 00:44:38.039 NotebookApp] Unreadable Notebook: /home/colabsims/code_workspace/gaze-estimation/gaze-estimation.ipynb NotJSONError('Notebook does not appear to be JSON: \'{\\n "cells": [\\n  {\\n   "cell_type": "m...',)
+[W 00:44:38.040 NotebookApp] 400 GET /api/contents/gaze-estimation.ipynb?type=notebook&_=1595115877059 (::1) 6.44ms referer=http://localhost:8001/notebooks/gaze-estimation.ipynb
+[W 00:44:45.723 NotebookApp] Notebook gaze-estimation-Copy1.ipynb is not trusted
+[I 00:44:47.989 NotebookApp] Kernel started: c2dcd89e-162b-4bcc-b1ec-e583191d8861
+[I 00:44:54.275 NotebookApp] Starting buffering for c2dcd89e-162b-4bcc-b1ec-e583191d8861:e558fdde13e34430b8d4126b951c9076
+[I 00:45:16.286 NotebookApp] Restoring connection for c2dcd89e-162b-4bcc-b1ec-e583191d8861:e558fdde13e34430b8d4126b951c9076
+[I 00:45:34.742 NotebookApp] Starting buffering for c2dcd89e-162b-4bcc-b1ec-e583191d8861:e558fdde13e34430b8d4126b951c9076
+[W 00:45:35.111 NotebookApp] Notebook gaze-estimation-Copy1.ipynb is not trusted
+[W 00:45:38.351 NotebookApp] 400 GET /api/contents/gaze-estimation.ipynb?type=notebook&_=1595115937435 (::1): Unreadable Notebook: /home/colabsims/code_workspace/gaze-estimation/gaze-estimation.ipynb NotJSONError('Notebook does not appear to be JSON: \'{\\n "cells": [\\n  {\\n   "cell_type": "m...',)
+[W 00:45:38.352 NotebookApp] Unreadable Notebook: /home/colabsims/code_workspace/gaze-estimation/gaze-estimation.ipynb NotJSONError('Notebook does not appear to be JSON: \'{\\n "cells": [\\n  {\\n   "cell_type": "m...',)
+[W 00:45:38.353 NotebookApp] 400 GET /api/contents/gaze-estimation.ipynb?type=notebook&_=1595115937435 (::1) 6.55ms referer=http://localhost:8001/notebooks/gaze-estimation.ipynb
+[I 00:47:04.779 NotebookApp] Interrupted...
+[I 00:47:04.779 NotebookApp] Shutting down 1 kernel
+[I 00:47:05.582 NotebookApp] Kernel shutdown: c2dcd89e-162b-4bcc-b1ec-e583191d8861
