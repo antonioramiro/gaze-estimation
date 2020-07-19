@@ -10,9 +10,9 @@ while i != folderSize:
     line = os.listdir(directory)[i]
     print(i,line)
     if not str(line[11:-5]) in dataset:
-        dataset[str(line[11:-5])] = [i,0]
+        dataset[str(line[11:-9])] = [i,0]
     else:
-        dataset[str(line[11:-5])][1] = i
+        dataset[str(line[11:-9])][1] = i
     i+=1
 for x, y in dataset.items():
   print(x, y)
