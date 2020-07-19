@@ -1,0 +1,12 @@
+Group of Coordinates: Head_Context_data_Poor
+Type of classifier: SVM
+C:1000000.0
+Gamma:1e-06
+
+----
+The percentage of success was: 13.0 %
+The range score was 1878 out of 3624 : 75620800.0 % 
+The score 3 was: 12.83 %
+The score 2 was: 40.07 %
+The score 1 was: 36.84 %
+The score 0 was: 9.69 %

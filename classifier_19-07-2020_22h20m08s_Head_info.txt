@@ -1,0 +1,12 @@
+Group of Coordinates: Head
+Type of classifier: SVM
+C:1000000.0
+Gamma:0.0001
+
+----
+The percentage of success was: 11.0 %
+The range score was 1716 out of 3624 : 69097600.0 % 
+The score 3 was: 10.93 %
+The score 2 was: 39.49 %
+The score 1 was: 30.3 %
+The score 0 was: 17.96 %
