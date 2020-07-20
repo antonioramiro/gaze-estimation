@@ -4,7 +4,7 @@ import sys #manipulating function arguments
 directory = sys.argv[1]
 dataset = {}
 folderSize = len(os.listdir(directory))
-files = os.listdir(dir)
+files = os.listdir(directory)
 files = sorted(files)
 i = 0
 
