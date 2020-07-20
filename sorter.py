@@ -4,10 +4,12 @@ import sys #manipulating function arguments
 directory = sys.argv[1]
 dataset = {}
 folderSize = len(os.listdir(directory))
+files = os.listdir(dir)
+files = sorted(files)
 i = 0
 
 while i != folderSize:
-    line = os.listdir(directory)[i]
+    line = files[i]
     print(i,line)
     if not str(line[11:-5]) in dataset:
         dataset[str(line[11:-9])] = [i,0]
