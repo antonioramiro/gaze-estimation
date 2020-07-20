@@ -12,9 +12,9 @@ while i != folderSize:
     line = files[i]
     print(i,line)
     if not str(line[11:-5]) in dataset:
-        dataset[str(line[11:-9])] = [i,0]
+        dataset[str(line[11:19])] = [i,0]
     else:
-        dataset[str(line[11:-9])][1] = i
+        dataset[str(line[11:19])][1] = i
     i+=1
 for x, y in dataset.items():
   print(x, y)
