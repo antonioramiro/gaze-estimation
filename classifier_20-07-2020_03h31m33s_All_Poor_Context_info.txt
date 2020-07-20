@@ -1,0 +1,12 @@
+Group of Coordinates: All_Poor_Context
+Type of classifier: SVM
+C:10000000.0
+Gamma:1e-08
+
+----
+The percentage of success was: 24.0 %
+The range score was 2782 out of 4410 : 136318000.0 % 
+The score 3 was: 23.88 %
+The score 2 was: 48.71 %
+The score 1 was: 20.2 %
+The score 0 was: 6.26 %
