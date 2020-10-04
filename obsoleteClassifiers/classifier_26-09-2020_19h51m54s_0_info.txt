@@ -1,0 +1,18 @@
+Group of Coordinates: 0
+Type of classifier: SVM
+
+----
+The percentage of success was: 96.0 %
+The range score was 8189 out of 8310 : 98.54 % 
+The score 3 was: 96.46 %
+The score 2 was: 2.89 %
+The score 1 was: 0.47 %
+The score 0 was: 0.07 %
+
+----
+The percentage of success was: 9.0 %
+The range score was 1766 out of 3708 : 47.63 % 
+The score 3 was: 8.82 %
+The score 2 was: 37.06 %
+The score 1 was: 42.31 %
+The score 0 was: 10.52 %
