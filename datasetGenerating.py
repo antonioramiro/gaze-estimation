@@ -272,7 +272,7 @@ def main(video,VFOA,visualFeedback):
                     else:
                         #adding context and the quadrant to the vector
                         resultingVector += objectDistance[0] + objectDistance[1] + [quadrantVFOA]
-                        resultingVector = [str(date.today()) + '_' + sys.argv[1][14:-4]+'_'+sys.argv[2]+'_'+str(j)] + resultingVector
+                        resultingVector = [str(date.today()) + '_' + videoname +'_'+sys.argv[2]+'_'+str(j)] + resultingVector
 
                         #outputing to a textfile, note that the chosen name is extremely tailored, manipulating expected inputs
                         # in particular, videos found in ~/source_videos/ folder 
@@ -283,8 +283,8 @@ def main(video,VFOA,visualFeedback):
                         usedFrames += 1
                         print('This frame has generated data successfully. The ' + VFOA + ' can be found in quadrant ' + str(quadrantVFOA) + '.')
 
-                    if visualFeedback: cv2.imshow('cvwindow', frame) #showing the frame
-                    if visualFeedback: cv2.waitKey(10) #waiting - this value can be decreased, to shorten generation times
+                        if visualFeedback: cv2.imshow('cvwindow', frame) #showing the frame
+                        if visualFeedback: cv2.waitKey(10) #waiting - this value can be decreased, to shorten generation times
 
             print('\n') #visual shell organization
             j += 1 #next frame
