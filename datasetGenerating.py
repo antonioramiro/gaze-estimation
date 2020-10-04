@@ -124,6 +124,8 @@ def short_long(entity):
 def main(video,VFOA,visualFeedback):
     #main function, converts a video *video*, a ground-truth visual focus of atention *VFOA* (allowing the user 
     # to choose whether she/he wants to see a visual representation X11 - Xming used) 
+    if not os.path.exists(os.path.join(os.path.abspath(os.path.join(os.getcwd(), os.pardir)), 'dataset' + str(date.today()))): os.makedirs((os.path.join(os.path.abspath(os.path.join(os.getcwd(), os.pardir)), 'dataset' + str(date.today()))))
+
     videoname = video.rsplit('/', 1)[-1][:-4]
 
     resultingVector = [0,0,0,0,0,0,0,0,0,0,\
