@@ -275,7 +275,7 @@ def main(video,VFOA,visualFeedback):
                         f= open('../dataset/' + str(date.today()) + '_' + videoname +'_'+sys.argv[2]+'_'+str(j)+'.txt',"w+") 
                         f.writelines(str(resultingVector))
                         f.close()   
-                        if visualFeedback: cv2.imwrite('../dataset/' + str(date.today()) + '_' + videoname+'_'+sys.argv[2]+'_'+str(j)+'.png', frame)
+                        if visualFeedback: cv2.imwrite('dataset/' + str(date.today()) + '_' + videoname+'_'+sys.argv[2]+'_'+str(j)+'.png', frame)
                         usedFrames += 1
                         print('This frame has generated data successfully. The ' + VFOA + ' can be found in quadrant ' + str(quadrantVFOA) + '.')
 
