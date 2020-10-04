@@ -3,7 +3,9 @@ import pyyolo #YOLO
 from openpose import pyopenpose as op #OpenPose
 import numpy as np #Numpy
 import sys #manipulating function arguments
-from datetime import date #for better organizing results
+from datetime import date #for better organizing results~
+import os
+
 
 def coords2Quadrante(coords,img,returnImg):
     # coords2Quadrante calculates to which quadrant (out of 16) a tuple of coordinates refers to;
