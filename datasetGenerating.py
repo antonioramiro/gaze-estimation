@@ -122,6 +122,7 @@ def short_long(entity):
 def main(video,VFOA,visualFeedback):
     #main function, converts a video *video*, a ground-truth visual focus of atention *VFOA* (allowing the user 
     # to choose whether she/he wants to see a visual representation X11 - Xming used) 
+    videoname = video.rsplit('/', 1)[-1]
 
     resultingVector = [0,0,0,0,0,0,0,0,0,0,\
                        0,0,0,0,0,0,0,0,0,0,\
@@ -271,10 +272,10 @@ def main(video,VFOA,visualFeedback):
 
                         #outputing to a textfile, note that the chosen name is extremely tailored, manipulating expected inputs
                         # in particular, videos found in ~/source_videos/ folder 
-                        f= open(str(date.today()) + '_' + sys.argv[1][14:-4]+'_'+sys.argv[2]+'_'+str(j)+'.txt',"w+") 
+                        f= open(str(date.today()) + '_' + videoname +'_'+sys.argv[2]+'_'+str(j)+'.txt',"w+") 
                         f.writelines(str(resultingVector))
                         f.close()   
-                        if visualFeedback: cv2.imwrite( str(date.today()) + '_' + sys.argv[1][14:-4]+'_'+sys.argv[2]+'_'+str(j)+'.png', frame)
+                        if visualFeedback: cv2.imwrite( str(date.today()) + '_' + videoname+'_'+sys.argv[2]+'_'+str(j)+'.png', frame)
                         usedFrames += 1
                         print('This frame has generated data successfully. The ' + VFOA + ' can be found in quadrant ' + str(quadrantVFOA) + '.')
 
