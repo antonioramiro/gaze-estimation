@@ -1,0 +1,4 @@
+Group of Coordinates: All_Rich_Context
+Type of classifier: SVM
+C:10000000.0
+Gamma:1e-06

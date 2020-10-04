@@ -1,0 +1,2 @@
+Group of Coordinates: 0
+Type of classifier: SVM
