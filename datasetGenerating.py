@@ -271,8 +271,7 @@ def main(video,VFOA,visualFeedback):
 
                     else:
                         #adding context and the quadrant to the vector
-                        resultingVector += objectDistance[0] + objectDistance[1] + [quadrantVFOA]
-                        resultingVector = [str(date.today()) + '_' + videoname +'_'+sys.argv[2]+'_'+str(j)] + resultingVector
+                        resultingVector += objectDistance[0] + objectDistance[1] + [str(date.today()) + '_' + videoname +'_'+sys.argv[2]+'_'+str(j)] + [quadrantVFOA]
 
                         #outputing to a textfile, note that the chosen name is extremely tailored, manipulating expected inputs
                         # in particular, videos found in ~/source_videos/ folder 
